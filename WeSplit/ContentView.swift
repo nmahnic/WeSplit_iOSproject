@@ -18,13 +18,13 @@ struct ContentView: View {
     
     var totalPerPerson: Double {
         let peopleCount = Double(numberOfPeople + 2)
+        return total / peopleCount
+    }
+    
+    var total: Double {
         let tipSelection = Double(tipPercentage)
-
         let tipValue = (checkAmount ?? 0) / 100 * tipSelection
-        let grandTotal = (checkAmount ?? 0) + tipValue
-        let amountPerPerson = grandTotal / peopleCount
-
-        return amountPerPerson
+        return (checkAmount ?? 0) + tipValue
     }
     
     var body: some View {
