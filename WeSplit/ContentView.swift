@@ -65,6 +65,15 @@ struct ContentView: View {
                 
                 Section {
                     Text(
+                        total,
+                        format:  .currency(code: currency)
+                    )
+                } header: {
+                    Text("Check with tip")
+                }
+                
+                Section {
+                    Text(
                         totalPerPerson,
                         format: .currency(code: currency)
                     )
