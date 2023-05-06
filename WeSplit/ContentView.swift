@@ -14,7 +14,13 @@ struct ContentView: View {
     @FocusState private var amountIsFocused: Bool
     
     let tipPercentages: [Int] = [0, 10, 15, 20, 25]
-    let currency = Locale.current.currency?.identifier ?? "EUR"
+    
+    
+    var currency : FloatingPointFormatStyle<Double>.Currency {
+        let currencyCode = Locale.current.currency?.identifier ??
+            Locale(identifier: "en-US").currency!.identifier
+       return FloatingPointFormatStyle<Double>.Currency( code: currencyCode )
+    }
     
     var totalPerPerson: Double {
         let peopleCount = Double(numberOfPeople + 2)
@@ -43,7 +49,7 @@ struct ContentView: View {
                     TextField(
                         "Amount spent",
                         value: $checkAmount,
-                        format: .currency(code: currency)
+                        format: currency
                     )
                     .keyboardType(.decimalPad)
                     .focused($amountIsFocused)
@@ -66,7 +72,7 @@ struct ContentView: View {
                 Section {
                     Text(
                         total,
-                        format:  .currency(code: currency)
+                        format: currency
                     )
                 } header: {
                     Text("Check with tip")
@@ -75,7 +81,7 @@ struct ContentView: View {
                 Section {
                     Text(
                         totalPerPerson,
-                        format: .currency(code: currency)
+                        format: currency
                     )
                 } header: {
                     Text("Total per person")
