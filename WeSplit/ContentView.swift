@@ -19,7 +19,7 @@ struct ContentView: View {
     var currency : FloatingPointFormatStyle<Double>.Currency {
         let currencyCode = Locale.current.currency?.identifier ??
             Locale(identifier: "en-US").currency!.identifier
-       return FloatingPointFormatStyle<Double>.Currency( code: currencyCode )
+        return FloatingPointFormatStyle<Double>.Currency( code: currencyCode )
     }
     
     var totalPerPerson: Double {
@@ -70,19 +70,13 @@ struct ContentView: View {
                 }
                 
                 Section {
-                    Text(
-                        total,
-                        format: currency
-                    )
+                    Text(total,format: currency)
                 } header: {
                     Text("Check with tip")
                 }
                 
                 Section {
-                    Text(
-                        totalPerPerson,
-                        format: currency
-                    )
+                    Text(totalPerPerson,format: currency)
                 } header: {
                     Text("Total per person")
                 }
