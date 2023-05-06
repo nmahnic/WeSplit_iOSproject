@@ -13,7 +13,6 @@ struct ContentView: View {
     @State private var tipPercentage : Int = 10
     @FocusState private var amountIsFocused: Bool
     
-    let tipPercentages: [Int] = [0, 10, 15, 20, 25]
     let currency = Locale.current.currency?.identifier ?? "EUR"
     
     var totalPerPerson: Double {
@@ -54,11 +53,11 @@ struct ContentView: View {
                         "Select tip",
                         selection: $tipPercentage
                     ){
-                        ForEach(tipPercentages, id: \.self){
+                        ForEach(0..<101){
                             Text($0, format: .percent)
                         }
                     }
-                    .pickerStyle(.segmented)
+                    .pickerStyle(.navigationLink)
                 } header: {
                     Text("How much tip do you want to leave?")
                 }
